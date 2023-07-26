@@ -1,0 +1,76 @@
+{
+    "sections": {
+      "main": {
+        "type": "main-page",
+        "settings": {
+        }
+      },
+      "b542e3bf-3920-4e3e-8777-5cfd1e3295f8": {
+        "type": "banner-page",
+        "settings": {
+          "heading": ""
+        }
+      },
+      "a1027eb6-706a-4a8c-89bf-d9620e9da8e0": {
+        "type": "contact",
+        "blocks": {
+          "e9211c3f-ba8e-40cc-8fc1-4d0a1df3bd10": {
+            "type": "contact",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/mail_1.svg",
+              "heading": "send us an email",
+              "subheading": "Fill in the form",
+              "link": ""
+            }
+          },
+          "b52e1da2-9c41-4e07-b55c-1368aeb82c99": {
+            "type": "contact",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/whatsapp_1.svg",
+              "heading": "WRITE US ON WHATAPP",
+              "subheading": "+39 348 317 9151",
+              "link": ""
+            }
+          },
+          "a715d4ea-6b53-4d6a-a5c9-5cb76a7dea17": {
+            "type": "contact",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/call_1.svg",
+              "heading": "call us",
+              "subheading": "800 987 654",
+              "link": ""
+            }
+          },
+          "ca6c92a8-4fd8-44c5-bcaf-3cbc659d5bd3": {
+            "type": "contact",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/messenger_1.svg",
+              "heading": "chat with us",
+              "subheading": "800 987 654",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "e9211c3f-ba8e-40cc-8fc1-4d0a1df3bd10",
+          "b52e1da2-9c41-4e07-b55c-1368aeb82c99",
+          "a715d4ea-6b53-4d6a-a5c9-5cb76a7dea17",
+          "ca6c92a8-4fd8-44c5-bcaf-3cbc659d5bd3"
+        ],
+        "settings": {
+          "heading": "our consultants will be happy to help you",
+          "description_1": "Before contacting us we recommend that you read the",
+          "description_2": "frequently asked questions",
+          "check_open": true,
+          "open": "customer service opening hours",
+          "open_time_1": "Monday-Friday: 09: 00-18: 30",
+          "open_time_2": "Saturday: 09: 00-12: 30"
+        }
+      }
+    },
+    "order": [
+      "main",
+      "b542e3bf-3920-4e3e-8777-5cfd1e3295f8",
+      "a1027eb6-706a-4a8c-89bf-d9620e9da8e0"
+    ]
+  }

@@ -1,0 +1,52 @@
+<div class="header-top position-relative text-center">
+  <div class="header-top__title">
+    <p class="h5 cl-w">{{ section.settings.announcement_bar }}</p>
+  </div>
+  <div class="position-absolute header-top__lang t-0 r-5 h-5">
+    {% if section.settings.check_language %}
+      <select
+        name="lang"
+        id="lang"
+        class="lang h5 cl-w h100">
+        {%- for language in localization.available_languages -%}
+          <option
+            value="{{ language.iso_code }}"
+            lang="{{ language.iso_code }}"
+            {%- if language.iso_code == localization.language.iso_code %}selected{% endif %}>
+            {{ language.endonym_name | capitalize }}
+          </option>
+        {%- endfor -%}
+
+      </select>
+    {% endif %}
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Announcement bar",
+    "class": "announcement-bar-section",
+    "enabled_on": {
+      "groups": ["header"]
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "announcement_bar",
+        "label": "Text",
+        "default": "free shipping in italy"
+      }, {
+        "type": "checkbox",
+        "id": "check_language",
+        "label": "Show/hide language",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Announcement bar"
+      }
+    ]
+  }
+{% endschema %}

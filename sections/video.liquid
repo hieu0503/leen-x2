@@ -1,0 +1,144 @@
+{% liquid
+  assign video_id = section.settings.video_url.id
+%}
+<section class="birth p100">
+  <div class="container-fluid">
+    <div class="birth-main">
+      <div class="birth-video">
+        <div class="video-container h100 position-relative">
+          {% if section.settings.video == null and section.settings.video_url != null %}
+            <div class="position-relative">
+              {%- if section.settings.cover_image != null -%}
+                {{
+                  section.settings.cover_image
+                  | image_url: width: 980
+                  | image_tag: class: 'w100 h100 position-relative z-1 image_video', alt: alt
+                }}
+                <div class="videoHis position-absolute z-1">
+                  {%- render 'icon-play' %}
+                </div>
+              {%- else -%}
+                {{
+                  'hero-apparel-3'
+                  | placeholder_svg_tag: 'placeholder-svg placeholder position-relative z-1 image_video'
+                }}
+                <div class="videoHis position-absolute z-1">
+                  {%- render 'icon-play' %}
+                </div>
+              {%- endif -%}
+              {%- if section.settings.video_url.type == 'youtube' -%}
+                <iframe
+                  src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1"
+                  class="js-youtube position-absolute t-0 w100 h100 l-0 z-0"
+                  allowfullscreen
+                ></iframe>
+              {%- else -%}
+                <iframe
+                  src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1"
+                  class="js-vimeo position-absolute t-0 w100 h100 l-0 z-0"
+                  allowfullscreen
+                ></iframe>
+              {%- endif -%}
+            </div>
+          {% else %}
+            <video id="myVideo" class="w100 h100 obj-cover">
+              <source src="{{ section.settings.video | video_tag }}">
+            </video>
+            <button id="playPauseBtn" class=" position-absolute border-none w100 h100 p-0">
+              <img
+                src=""
+                alt=""
+                class="btn-video"
+              >
+              {%- render 'icon-play' %}
+            </button>
+          {% endif %}
+        </div>
+        {% javascript %}
+          // JS video
+
+          const image_videos = document.querySelectorAll('.image_video');
+          const videoHis = document.getElementsByClassName('videoHis');
+
+          image_videos.forEach((image_video) => {
+            image_video.addEventListener('click', () => {
+              image_video.style.opacity = '0';
+              image_video.style.visibility = 'hidden';
+
+              // Lặp qua các phần tử trong danh sách videoHis và làm mờ chúng
+              for (let i = 0; i < videoHis.length; i++) {
+                videoHis[i].style.opacity = '0';
+                videoHis[i].style.display = 'none';
+              }
+            });
+          });
+
+          const video = document.getElementById('myVideo');
+          const playPauseBtn = document.getElementById('playPauseBtn');
+
+          function togglePlayPause() {
+            if (video.paused) {
+              video.play();
+              playPauseBtn.style.opacity = '0';
+              // playPauseBtn.innerHTML = '<img src="" alt="" class="">';
+            } else {
+              video.pause();
+
+              playPauseBtn.style.opacity = '1';
+              // playPauseBtn.innerHTML = '<img src="./theme/frontend/images/play.svg" alt="play" class="btn-video">';
+            }
+          }
+
+          playPauseBtn.addEventListener('click', togglePlayPause);
+        {% endjavascript %}
+      </div>
+      <div class="birth-content text-center">
+        <h1 class="h1 mt-50 mb-25">{{ section.settings.heading }}</h1>
+        <p class="description">{{ section.settings.Description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Video",
+  "class": "section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+      "label": "Link video"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "cover image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Birth of the brand",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "Description",
+      "label": "Description",
+      "default": "The DE CARLO brand was born in Florence on November 7, 2019, thanks to the passion for precious stones that Nicholas De Carlo, a Florentine entrepreneur, has cultivated since he was a child. Nicholas' goal was to launch a new line of jewelry, with a modern and innovative design, able to make all women feel unique and inimitable. All this was possible thanks to creations suitable for every occasion, with shapes that recall the essence of the maison: ELEGANCE, QUALITY, PASSION."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video"
+    }
+  ]
+}
+{% endschema %}

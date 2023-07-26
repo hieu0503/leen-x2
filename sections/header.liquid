@@ -1,0 +1,122 @@
+<header class="header position-relative">
+  <div class="header-bottom align-center justify-between z-2 position-relative d-flex navbar-expand-lg">
+    <div class="header-logo">
+      <a class="d-inline-block h100" href="{{ routes.root_url }}">
+        {%- if section.settings.logo != blank -%}
+          <img
+            src="{{ section.settings.logo | image_url }}"
+            class="header-logo-img h100"
+            alt="{{ section.settings.logo.alt }}"
+          >
+        {%- else -%}
+          <span class="h2">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+    <nav class="header-menu">
+      <ul class="menu-main align-center d-flex">
+        {% for link in section.settings.menu.links -%}
+          <li class="menu-item">
+            <a class="menu-link h5 cl-black" href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="header-populated d-flex">
+      {% if section.settings.button_search %}
+        <div class="header-populated__item h-2 w-2">
+          <div class="header-search">
+            <a href="{{ routes.search_url }}" class="button-primary button-search">
+              {% render 'icon-search' %}
+            </a>
+          </div>
+        </div>
+      {% endif %}
+      {% if section.settings.button_love %}
+        <div class="header-populated__item h-2 w-2">
+          <div class="header-love">
+            <button class="button-primary button-love">
+              {% render 'icon-love' %}
+            </button>
+          </div>
+        </div>
+      {% endif %}
+      {% if section.settings.button_user %}
+        <div class="header-populated__item h-2 w-2">
+          <div class="header-user">
+            {% if customer %}
+              <a href="{{ routes.account_url }}" class="button-primary button-user">
+                {% render 'icon-user' %}
+              </a>
+            {% else %}
+              <a href="{{ routes.account_login_url }}" class="button-primary button-user">{% render 'icon-user' %}</a>
+              {% if shop.customer_accounts_optional %}
+                <a href="{{ routes.account_register_url }}">
+                  {% render 'icon-user' %}
+                </a>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      {% if section.settings.button_bag %}
+        <div class="header-populated__item h-2 w-2">
+          <div class="header-bag">
+            <a href="{{ routes.cart_url }}" class="button-primary button-bag">
+              {% render 'icon-cart' %}
+            </a>
+          </div>
+        </div>
+      {% endif %}
+      <button class="header-button navbar-toggler collapsed" type="button">
+        <span class="d-inline-block navbar-toggler-icon h-2 w-2 icon-menu"> {% render 'icon-menu' %}</span>
+        <span class="d-inline-block navbar-toggler-icon h-2 w-2 icon-cancel"> {% render 'icon-cancel' %}</span>
+      </button>
+    </div>
+  </div>
+  <div class="overlay w100 h100 t-0 l-0 position-fixed z-1"></div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:settings_schema.logo.settings.logo_image.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Choose a menu"
+    },
+    {
+      "type": "checkbox",
+      "label": "Show/hide search",
+      "id": "button_search",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Show/hide love",
+      "id": "button_love",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Show/hide user",
+      "id": "button_user",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Show/hide cart",
+      "id": "button_bag",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

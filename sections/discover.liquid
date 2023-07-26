@@ -1,0 +1,140 @@
+{% style %}
+  .discover-main {
+    padding: {{ section.settings.padding }}px {{ section.settings.padding_2 }}px;
+  }
+
+  @media screen and (max-width: 576px) {
+    .discover-main {
+      padding: {{ section.settings.padding_mobile }}px {{ section.settings.padding_mobile_2 }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="p100">
+  <div class="container">
+    <div class="discover d-flex flex-wrap {% if section.settings.rtl %}rtl{% endif %}">
+      <div class="discover-media">
+        {% if section.settings.myVideo %}
+          <div class="video-container h100 position-relative">
+            <video id="myVideo" class="w100 h100 obj-cover">
+              <source src="{{ section.settings.myVideo | video_tag }}">
+            </video>
+            <button id="playPauseBtn" class=" position-absolute border-none w100 h100 p-0">
+              {% render 'icon-play', class: 'btn-video' %}
+            </button>
+          </div>
+        {% elsif section.settings.image %}
+          <div class="img-container">
+            <img
+              src="{{ section.settings.image | image_url }}"
+              alt="{{ section.settings.image | image_alt }}"
+              class="img-container__img w100"
+            >
+          </div>
+        {% else %}
+          {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg w100 h100' }}
+        {% endif %}
+      </div>
+      <div class="discover-main">
+        <h2 class="h1 cl-primary mb-20">{{ section.settings.heading }}</h2>
+        <p class="discover-text description mb-70">
+          {{ section.settings.subheading }}
+        </p>
+        <a href="{{ section.settings.link }}" class="btn btn-discover">{{ section.settings.button }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discover",
+  "class": "discover",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "rtl",
+      "label": "right",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 50,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "padding top/bottom",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "padding_2",
+      "min": 50,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "padding left/right",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "padding mobile top/bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_2",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "padding mobile left/right",
+      "default": 30
+    },
+    {
+      "type": "video",
+      "id": "myVideo",
+      "label": "Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "We focus on what's really important",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloreLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consecte",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "default": "discover the story",
+      "label": "Text button"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discover"
+    }
+  ]
+}
+{% endschema %}

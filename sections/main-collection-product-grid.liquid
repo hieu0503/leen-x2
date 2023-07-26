@@ -1,0 +1,100 @@
+<section class="layout-collection p100">
+  <div class="container">
+    <div class="breadcrumb-filter d-flex justify-between align-center">
+      <h5 class="number description">
+        {{ section.settings.there_are }}
+        <span class="description">
+          {%- if collection.results_count -%}
+            {{ collection.terms | assign_to: 'terms' }}
+            {{ collection.results_count | assign_to: 'count' }}
+          {%- elsif collection.products_count == collection.all_products_count -%}
+            {{ collection.products_count | assign_to: 'count' }}
+          {%- else -%}
+            {{ collection.products_count | assign_to: 'product_count' }}
+            {{ collection.all_products_count | assign_to: 'count' }}
+          {%- endif -%}
+        </span>
+        {{ section.settings.product_count }}
+      </h5>
+      <div class="filter-block d-flex">
+        <span class="h5 p-0 fw-600">{{ section.settings.sort }}</span>
+        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+        <select class="filter-sort h5 border-none p-0 fw-600">
+          {%- for option in collection.sort_options -%}
+            <option
+              value="{{ option.value | escape }}"
+              {% if option.value == sort_by %}
+                selected="selected"
+              {% endif %}
+            >
+              {{ option.name | escape }}
+            </option>
+          {%- endfor -%}
+        </select>
+        <button class="btn filter-filter h5 border-none p-0 fw-600">{{ section.settings.button }}</button>
+      </div>
+    </div>
+    <div class="shop-collection shop-main">
+      {%- if collection.products.size == 0 -%}
+        <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+          <div class="title-wrapper center">
+            <h2 class="title title--primary">
+              {{ section.settings.no_products }}
+              <br>
+              <a href="{{ routes.root_url }}" class="underlined-link link">{{ section.settings.back_to }}</a>
+            </h2>
+          </div>
+        </div>
+      {%- else -%}
+        {% for product in collection.products %}
+            {% render 'card-product', card_product: product, section_id: section.id %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Layout collection",
+  "class": "main-collection-product-grid",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "there_are",
+      "label": "There are",
+      "default": "There are"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "product_count",
+      "label": "Product",
+      "default": "product"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "sort",
+      "label": "Sort",
+      "default": "sort by:"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button",
+      "label": "Button",
+      "default": "filter"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "no_products",
+      "label": "No Products",
+      "default": "No products found"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "back_to",
+      "label": "Back to",
+      "default": "Homepage"
+    }
+  ]
+}
+{% endschema %}

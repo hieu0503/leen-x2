@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="customer login text-center p100">
+    <h1 id="login" class="mb-20 h2" tabindex="-1">Login</h1>
+    <div>
+      {%- form 'customer_login', novalidate: 'novalidate' -%}
+        {%- if form.errors -%}
+          <h2 class="form__message" tabindex="-1" autofocus>Login error</h2>
+          {{ form.errors | default_errors }}
+        {%- endif -%}
+
+        <div class="field d-flex mb-20">
+          <input
+            type="email"
+            name="customer[email]"
+            id="CustomerEmail"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif -%}
+            placeholder="Email"
+          >
+        </div>
+
+        {%- if form.password_needed -%}
+          <div class="field d-flex">
+            <input
+              type="password"
+              value=""
+              name="customer[password]"
+              id="CustomerPassword"
+              autocomplete="current-password"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif -%}
+              placeholder="Password"
+            >
+          </div>
+
+          <a class="description" href="#recover"> Forgot password </a>
+        {%- endif -%}
+
+        <button class="btn mb-20">Sign in</button>
+
+        <a class="description" href="{{ routes.account_register_url }}"> Create account </a>
+      {%- endform -%}
+    </div>
+
+    {%- if shop.checkout.guest_login -%}
+      <div>
+        <hr>
+        <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
+
+        {%- form 'guest_login' -%}
+          <button>
+            {{ 'customer.login_page.guest_continue' | t }}
+          </button>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main login"
+}
+{% endschema %}

@@ -1,0 +1,148 @@
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "button": "button label",
+            "link": ""
+          }
+        },
+        "24bb78df-c20a-4ef1-8485-8ccd2b884973": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
+            "heading": "Image slide",
+            "button": "button label",
+            "link": ""
+          }
+        },
+        "9ccce250-6cf8-40ce-97be-5217e4aa3552": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a-bridge-sitting-in-thick-pink-and-purple-fog.jpg",
+            "heading": "Image slide",
+            "button": "button label",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide",
+        "24bb78df-c20a-4ef1-8485-8ccd2b884973",
+        "9ccce250-6cf8-40ce-97be-5217e4aa3552"
+      ],
+      "settings": {
+      }
+    },
+    "d4647362-4775-40db-a345-230001b7a0a2": {
+      "type": "collection-list",
+      "settings": {
+        "heading": "shop by category",
+        "collection_list": [
+          "bracelets",
+          "watches",
+          "laptops",
+          "ring"
+        ]
+      }
+    },
+    "047638ea-d645-4ad7-96cd-16f8b49e0289": {
+      "type": "discover",
+      "settings": {
+        "myVideo": "shopify:\/\/files\/videos\/Video.mp4",
+        "heading": "We focus on what's really important",
+        "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloreLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consecte",
+        "button": "discover the story",
+        "link": ""
+      }
+    },
+    "a813bc43-da5f-49dc-b153-e34bc119ff96": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Featured product",
+        "product_list": [
+          "apple-watch-se-2022-gps-40mm",
+          "pre-order",
+          "bowtie-product-rich-media",
+          "enamel-pin"
+        ]
+      }
+    },
+    "b39d98c3-6f13-4a68-8ede-573b6061a8dd": {
+      "type": "banner-main",
+      "settings": {
+        "banner": "shopify:\/\/shop_images\/flatlay-of-a-cell-phone-and-a-tablet-with-a-white-stylus.jpg",
+        "heading": "New collection 2021",
+        "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu",
+        "button": "See more",
+        "link": ""
+      }
+    },
+    "2a8b2cc9-1aa7-48e5-ab99-bb15721e60f6": {
+      "type": "service",
+      "blocks": {
+        "ce242b26-7b50-4b37-b0e6-513158cfa791": {
+          "type": "service",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/parcel_1.svg",
+            "heading_inline_richtext": "free shipping in Italy",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "button": "Read more",
+            "link": ""
+          }
+        },
+        "7e6bfc6e-014f-43eb-b805-0a483e92310d": {
+          "type": "service",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/parcel_1.svg",
+            "heading_inline_richtext": "free shipping in Italy",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "button": "Read more",
+            "link": ""
+          }
+        },
+        "4050e12b-ff5f-4627-b675-4de4e3538cd2": {
+          "type": "service",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/parcel_1.svg",
+            "heading_inline_richtext": "free shipping in Italy",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "button": "Read more",
+            "link": ""
+          }
+        },
+        "ba6d4fa5-7a4d-41dd-b5a5-37f2a5d8384a": {
+          "type": "service",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/parcel_1.svg",
+            "heading_inline_richtext": "free shipping in Italy",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "button": "Read more",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "ce242b26-7b50-4b37-b0e6-513158cfa791",
+        "7e6bfc6e-014f-43eb-b805-0a483e92310d",
+        "4050e12b-ff5f-4627-b675-4de4e3538cd2",
+        "ba6d4fa5-7a4d-41dd-b5a5-37f2a5d8384a"
+      ],
+      "settings": {
+        "heading": "our services"
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "d4647362-4775-40db-a345-230001b7a0a2",
+    "047638ea-d645-4ad7-96cd-16f8b49e0289",
+    "a813bc43-da5f-49dc-b153-e34bc119ff96",
+    "b39d98c3-6f13-4a68-8ede-573b6061a8dd",
+    "2a8b2cc9-1aa7-48e5-ab99-bb15721e60f6"
+  ]
+}

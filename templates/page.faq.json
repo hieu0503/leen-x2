@@ -1,0 +1,118 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "bdd34b6e-1e08-44b3-8f03-1db825b1c30d": {
+      "type": "banner-page",
+      "settings": {
+        "heading": ""
+      }
+    },
+    "d97e62c6-e670-4f5f-8195-c806aca8ade6": {
+      "type": "main-faq",
+      "blocks": {
+        "template--20098950136118__d97e62c6-e670-4f5f-8195-c806aca8ade6-tab-1": {
+          "type": "tab",
+          "settings": {
+            "heading": "PURCHASE",
+            "question1": "what are the shipping time and cost available of dercalo ?",
+            "answer1": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question2": "what are the shipping time and cost available of dercalo ?",
+            "answer2": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question3": "what are the shipping time and cost available of dercalo ?",
+            "answer3": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question4": "what are the shipping time and cost available of dercalo ?",
+            "answer4": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question5": "what are the shipping time and cost available of dercalo ?",
+            "answer5": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>"
+          }
+        },
+        "9c531944-1f48-4e0f-8afc-e26987911f15": {
+          "type": "tab",
+          "settings": {
+            "heading": "REFUND",
+            "question1": "what are the shipping time and cost available of dercalo ?",
+            "answer1": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question2": "what are the shipping time and cost available of dercalo ?",
+            "answer2": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question3": "",
+            "answer3": "",
+            "question4": "",
+            "answer4": "",
+            "question5": "",
+            "answer5": ""
+          }
+        },
+        "a3f9df3d-63cc-4838-9b3c-925e691dd314": {
+          "type": "tab",
+          "settings": {
+            "heading": "PAYMENT",
+            "question1": "what are the shipping time and cost available of dercalo ?",
+            "answer1": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question2": "what are the shipping time and cost available of dercalo ?",
+            "answer2": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question3": "what are the shipping time and cost available of dercalo ?",
+            "answer3": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question4": "",
+            "answer4": "",
+            "question5": "",
+            "answer5": ""
+          }
+        },
+        "1982c504-29a4-4d96-8a15-3e778b4345bf": {
+          "type": "tab",
+          "settings": {
+            "heading": "COVID 19",
+            "question1": "what are the shipping time and cost available of dercalo ?",
+            "answer1": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question2": "",
+            "answer2": "",
+            "question3": "",
+            "answer3": "",
+            "question4": "",
+            "answer4": "",
+            "question5": "",
+            "answer5": ""
+          }
+        },
+        "2a97dce1-c4eb-4dc5-b51f-e261f7082d35": {
+          "type": "tab",
+          "settings": {
+            "heading": "PRODUCT",
+            "question1": "what are the shipping time and cost available of dercalo ?",
+            "answer1": "<p>Shipping costs are free on all orders. Please allow 8 working days for delivery.<\/p><p>Information on Mother's Day shipping<\/p><p><strong>DELIVERY<\/strong><\/p><p>To receive your order before Mother's Day, please make your purchase no later than 11:59 pm on Friday 30 April<\/p><p><strong>ENGRAVINGS<\/strong><\/p><p>For orders with engravings, please place your order no later than 11:59 pm on Wednesday 21st April for delivery before Mother's Day. We remind you that we do not accept replacements and returns of orders that include engravings or any type of personalization.Delivery of items with a personalization service may take longer. You can check the status of your order and its shipment by contacting the Customer Service on 800 935 547.<\/p>",
+            "question2": "",
+            "answer2": "",
+            "question3": "",
+            "answer3": "",
+            "question4": "",
+            "answer4": "",
+            "question5": "",
+            "answer5": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20098950136118__d97e62c6-e670-4f5f-8195-c806aca8ade6-tab-1",
+        "9c531944-1f48-4e0f-8afc-e26987911f15",
+        "a3f9df3d-63cc-4838-9b3c-925e691dd314",
+        "1982c504-29a4-4d96-8a15-3e778b4345bf",
+        "2a97dce1-c4eb-4dc5-b51f-e261f7082d35"
+      ],
+      "settings": {
+        "other": "Do you have any other questions?",
+        "text_link": "Contact us now",
+        "link": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "bdd34b6e-1e08-44b3-8f03-1db825b1c30d",
+    "d97e62c6-e670-4f5f-8195-c806aca8ade6"
+  ]
+}
+

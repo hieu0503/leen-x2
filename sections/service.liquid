@@ -1,0 +1,84 @@
+<section class="service p100">
+  <div class="container">
+    <h2 class="h1 cl-primary mb-45 text-center">{{ section.settings.heading }}</h2>
+    <div class="service-main d-grid">
+      {% for block in section.blocks %}
+        <div class="service-item text-center">
+          <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image | image_alt }}">
+          <h3 class="product-name h4 mb-5 mt-30">
+            {{ block.settings.heading_inline_richtext }}
+          </h3>
+          <p class="price h5 text-center mb-20">{{ block.settings.subheading }}</p>
+          <a href="{{ block.settings.link }}" class="btn btn-service">{{ block.settings.button }}{% render 'readmore' %}</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Services",
+    "class": "service",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "our services"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "service",
+        "name": "service",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "heading_inline_richtext",
+            "default": "free shipping in Italy",
+            "label": "Heading"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "subheading",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "button",
+            "default": "Read more",
+            "label": "Text button"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link sevice"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Services",
+        "blocks": [
+          {
+            "type": "service"
+          }, {
+            "type": "service"
+          }, {
+            "type": "service"
+          }, {
+            "type": "service"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

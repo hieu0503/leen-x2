@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "f6a9c273-5a6c-4b0b-a3a5-bceb8bb16a17": {
+      "type": "banner-page",
+      "settings": {
+        "heading": ""
+      }
+    },
+    "35dd34ee-fcdb-41b3-9134-2319dba8150f": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "become official de carlo dealer",
+        "description": "Exclusive jewels with a contemporary design, handcrafted finished and able to arouse emotions"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f6a9c273-5a6c-4b0b-a3a5-bceb8bb16a17",
+    "35dd34ee-fcdb-41b3-9134-2319dba8150f"
+  ]
+}
+

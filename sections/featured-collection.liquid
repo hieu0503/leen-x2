@@ -1,0 +1,36 @@
+<section class="feature p100">
+  <div class="container">
+    <h2 class="h1 cl-primary mb-45 text-center">{{ section.settings.heading }}</h2>
+    <div class="shop-featured__main shop-home justify-between d-flex">
+      {% for product in section.settings.product_list %}
+        {% render 'card-product', card_product: product, section_id: section.id %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "class": "feature-collection",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Featured product",
+      "label": "Heading"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products",
+      "limit": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product"
+    }
+  ]
+}
+{% endschema %}

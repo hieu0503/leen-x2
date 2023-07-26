@@ -1,0 +1,81 @@
+{
+    "sections": {
+      "main": {
+        "type": "main-page",
+        "settings": {
+        }
+      },
+      "2ac9ae33-b6bc-449b-976e-ebad1f884a85": {
+        "type": "banner-page",
+        "settings": {
+          "heading": ""
+        }
+      },
+      "2086c456-bd46-4de9-81a4-2187e8bef0c8": {
+        "type": "video",
+        "settings": {
+          "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+          "cover_image": "shopify:\/\/shop_images\/small-business-interior.jpg",
+          "heading": "Birth of the brand",
+          "Description": "The DE CARLO brand was born in Florence on November 7, 2019, thanks to the passion for precious stones that Nicholas De Carlo, a Florentine entrepreneur, has cultivated since he was a child. Nicholas' goal was to launch a new line of jewelry, with a modern and innovative design, able to make all women feel unique and inimitable. All this was possible thanks to creations suitable for every occasion, with shapes that recall the essence of the maison: ELEGANCE, QUALITY, PASSION."
+        }
+      },
+      "82a90584-7c37-44c8-8b8f-0eadb97a356f": {
+        "type": "multirow",
+        "blocks": {
+          "template--20059569914166__82a90584-7c37-44c8-8b8f-0eadb97a356f-1689654072178a8794-0": {
+            "type": "row",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/icon-his1.svg",
+              "heading": "ELEGANCE",
+              "content": "DE CARLO means elegance",
+              "description": "exhibited thanks to the shining and refined stones that portray the contemporary era, sensual, simple and eye-catching creations that perfectly frame the female body, enhancing its natural beauty.",
+              "image": "shopify:\/\/shop_images\/his1.svg"
+            }
+          },
+          "template--20059569914166__82a90584-7c37-44c8-8b8f-0eadb97a356f-1689654072178a8794-1": {
+            "type": "row",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/icon-his2.svg",
+              "heading": "QUALITY",
+              "content": "DE CARLO means elegance",
+              "description": "exhibited thanks to the shining and refined stones that portray the contemporary era, sensual, simple and eye-catching creations that perfectly frame the female body, enhancing its natural beauty.",
+              "image": "shopify:\/\/shop_images\/his2.svg"
+            }
+          },
+          "template--20059569914166__82a90584-7c37-44c8-8b8f-0eadb97a356f-1689654072178a8794-2": {
+            "type": "row",
+            "settings": {
+              "heading": "heading",
+              "content": "DE CARLO means elegance",
+              "description": "exhibited thanks to the shining and refined stones that portray the contemporary era, sensual, simple and eye-catching creations that perfectly frame the female body, enhancing its natural beauty."
+            }
+          }
+        },
+        "block_order": [
+          "template--20059569914166__82a90584-7c37-44c8-8b8f-0eadb97a356f-1689654072178a8794-0",
+          "template--20059569914166__82a90584-7c37-44c8-8b8f-0eadb97a356f-1689654072178a8794-1",
+          "template--20059569914166__82a90584-7c37-44c8-8b8f-0eadb97a356f-1689654072178a8794-2"
+        ],
+        "settings": {
+        }
+      },
+      "3a82947f-13c2-4e5a-8c8a-c65efcd3db85": {
+        "type": "banner-center",
+        "settings": {
+          "banner": "shopify:\/\/shop_images\/ripples-of-sand-in-black-and-white.jpg",
+          "heading": "why choose us ?",
+          "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu",
+          "button": "back to shopping now",
+          "link": ""
+        }
+      }
+    },
+    "order": [
+      "main",
+      "2ac9ae33-b6bc-449b-976e-ebad1f884a85",
+      "2086c456-bd46-4de9-81a4-2187e8bef0c8",
+      "82a90584-7c37-44c8-8b8f-0eadb97a356f",
+      "3a82947f-13c2-4e5a-8c8a-c65efcd3db85"
+    ]
+  }

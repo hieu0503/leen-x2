@@ -1,0 +1,73 @@
+{% style %}
+  .slider-slide svg,
+  .slider-slide img {
+    object-fit: cover;
+    aspect-ratio: 2.35;
+  }
+{% endstyle %}
+
+<section class="banner-main position-relative">
+  <div class="slider-container w100">
+    {% for block in section.blocks %}
+      <div class="slider-slide w100 h100 position-relative">
+        {% if block.settings.image %}
+          <img
+            class="w100"
+            src="{{ block.settings.image | image_url }}"
+            alt="{{ block.settings.image | image_alt }}"
+          >
+        {% else %}
+          {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+        <div class="slider-slide__item l-0 r-0 position-absolute">
+          <div class="container">
+            <h2 class="h1 mb-20 cl-w">{{ block.settings.heading }}</h2>
+            <a href="{{ block.settings.link }}" class="btn btn-banner">{{ block.settings.button }}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="slider-nav position-absolute justify-between d-flex">
+    <button class="slider-prev p-0 m-0 border-none" onclick="changeSlide(-1)">{% render 'arrow-left' %}</button>
+    <button class="slider-next p-0 m-0 border-none" onclick="changeSlide(1)">{% render 'arrow-right' %}</button>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "slideshow",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Image slide",
+          "label": "Text slide"
+        },
+        {
+          "type": "text",
+          "id": "button",
+          "default": "button label",
+          "label": "Text button"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

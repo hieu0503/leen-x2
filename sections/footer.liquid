@@ -1,0 +1,191 @@
+{% style %}
+  .footer__item-des-item p {
+    font-weight: 400;
+    font-size: var(--heading-h5);
+    line-height: var(--lh-h5);
+    color: var(--gray2);
+  }
+
+  .footer__item-des-item p:not(:first-child) {
+    margin-top: 15px;
+  }
+{% endstyle %}
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top text-center">
+      <div class="footer-logo">
+        <a href="{{ router.root_url }}" class="footer-logo-link d-inline-block">
+          {% if section.settings.image != blank %}
+            <img
+              src="{{ section.settings.image | image_url }}"
+              alt="{{ section.settings.image.alt }}"
+              class="footer-logo-img"
+            >
+          {% else %}
+            <span class="h2">{{ shop.name }}</span>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+    <div class="footer-mid p70">
+      <div class="row">
+        {% for block in section.blocks %}
+          <div class="col-12 col-md-6 col-lg-3 order-2 mb-60-m">
+            <div class="footer-mid__item">
+              {%- case block.type -%}
+                {% when 'text' %}
+                  <h2 class="footer-mid__item-title h5 uppercase mb-30 cl-w fw-400">{{ block.settings.heading }}</h2>
+                  <div class="footer-mid__item-des">
+                    <ul>
+                      <li class="footer__item-des-item">
+                        <p class="description footer-mid__text">{{ block.settings.subtext }}</p>
+                      </li>
+                    </ul>
+                  </div>
+                {%- when 'link_list' -%}
+                  <h2 class="footer-mid__item-title h5 uppercase mb-30 cl-w fw-400">{{ block.settings.heading }}</h2>
+                  <div class="footer-mid__item-des">
+                    <ul>
+                      {% for link in block.settings.menu.links %}
+                        <li class="footer__item-des-item">
+                          <a href="{{ link.url  }}" class="description footer-mid__text">{{ link.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% when 'newsletter' %}
+                  <h2 class="footer-mid__item-title h5 uppercase mb-30 cl-w fw-400">
+                    {{ block.settings.heading_form }}
+                  </h2>
+                  <div class="footer-mid__item-des">
+                    {% form 'customer', id: 'ContactFooter', class: 'form-footer d-flex mb-70' %}
+                      <input
+                        id="NewsletterForm--{{ section.id }}"
+                        type="email"
+                        name="contact[email]"
+                        class="footer-input w100 border-none fw-400"
+                        id=""
+                        required
+                        value="{{ form.email }}"
+                        placeholder="Your Email"
+                      >
+                      <button
+                        type="submit"
+                        id="Subscribe"
+                        class="footer-button border-none fw-400"
+                      >
+                        {{ block.settings.button_form }}
+                      </button>
+                    {% endform %}
+                  </div>
+                  {% if block.settings.show_social %}
+                    <h2 class="footer-mid__item-title h5 uppercase mb-30 cl-w fw-400">
+                      {{ block.settings.heading_social }}
+                    </h2>
+                    <div class="footer-social">
+                      {% render 'social-icon' %}
+                    </div>
+                  {% endif %}
+              {%- endcase -%}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p class="footer-bottom__text">
+        {{ section.settings.footer_text }}
+      </p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "section-footer",
+  "limit": 1,
+  "max_blocks": 4,
+  "settings": [
+    {
+      "label": "Choose a logo",
+      "type": "image_picker",
+      "id": "image"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "De Carlo Nicholas- VAT number: 07020260480- REA: FI-674952 - Registered office: Via di San Quirico a Ruballa 15, 50012, Bagno a Ripoli (FI), Italy"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Customer care",
+          "label": "heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "main-menu",
+          "label": "menu"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Information",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Legal information",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "label": "Information"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading_form",
+          "default": "subscribe for newsletter",
+          "label": "Heading"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "button_form",
+          "default": "Subscribe",
+          "label": "Text button"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "default": true,
+          "label": "Show Social"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading_social",
+          "default": "Social",
+          "label": "Heading"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

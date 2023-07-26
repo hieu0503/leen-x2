@@ -1,0 +1,93 @@
+<section class="profuct-tab p100">
+  <div class="container">
+    <ul class="tab-header tab-product mb-60 d-flex">
+      {% for block in section.blocks %}
+        <li
+          class="tab-link border-none fw-600 uppercase {% if forloop.first == true %}active{% endif %}"
+          onclick="changeTab(event, '{{ block.id }}')"
+        >
+          {{ block.settings.captions }}
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="tab-content mt-80 mb-80">
+      {% for block in section.blocks %}
+        <div id="{{ block.id }}" class="tab {% if forloop.first == true %}active{% endif %}">
+          <div class="tab-content-main justify-between d-grid">
+            <div class="tab-content-left area1">
+              <div class="tab-content-title fw-600 uppercase mb-35">{{ block.settings.heading }}</div>
+              {% if block.settings.description != blank %}
+                <ul class="tab-content-ul">
+                  <li class="tab-content-li h5">
+                    {{ block.settings.description }}
+                  </li>
+                </ul>
+              {% endif %}
+            </div>
+            <div class="tab-content-right area2">
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url }}"
+                  alt="{{ block.settings.image | image_url }}"
+                  class="tab-content-img w100"
+                >
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main tabs",
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "captions",
+          "label": "Captions",
+          "default": "product information"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "product info"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main tabs",
+      "blocks": [
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

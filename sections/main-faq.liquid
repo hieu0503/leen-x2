@@ -1,0 +1,176 @@
+<section class="faq p100">
+  <div class="container-fluid">
+    <ul class="tab-header mb-60 d-flex p-0 justify-center">
+      {% for block in section.blocks %}
+        <li
+          class="tab-link border-none fw-600 uppercase {% if forloop.first == true %}active{% endif %}"
+          onclick="changeTab(event, '{{ block.id }}')"
+        >
+          {{ block.settings.heading }}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="tab-content">
+      {% for block in section.blocks %}
+        <div id="{{ block.id }}" class="tab {% if forloop.first == true %}active{% endif %}">
+          {% for i in (1..5) %}
+            {% capture question %}question{{i}}{% endcapture %}
+            {% capture answer %}answer{{i}}{% endcapture %}
+            {% if block.settings[answer] != blank %}
+              <div class="tab-item">
+                <h3 class="h4 question position-relative uppercase">
+                  {{ block.settings[question] }}
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </h3>
+                <div class="answer">
+                  {{ block.settings[answer] }}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% javascript %}
+      const questions = document.querySelectorAll('.question');
+      const answers = document.querySelectorAll('.answer');
+      const path2s = [...document.getElementsByClassName('path2')];
+
+      questions.forEach((question, index) => {
+        question.addEventListener('click', () => {
+          const answer = answers[index];
+          const path2 = path2s[index];
+
+          // Nếu câu trả lời đang được hiển thị
+          if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            path2.style.transform = 'rotate(90deg)';
+          } else {
+            // Ẩn tất cả các câu trả lời và đặt các path2 về góc ban đầu trước khi hiển thị câu trả lời được chọn
+            answers.forEach((a, i) => {
+              a.style.display = 'none';
+            });
+            path2s.forEach((p, i) => {
+              p.style.transform = 'rotate(90deg)';
+            });
+
+            answer.style.display = 'block';
+            path2.style.transform = 'rotate(0deg)';
+          }
+        });
+      });
+    {% endjavascript %}
+
+    <div class="any-question text-center mt-100">
+      <p class="any-question__p fw-600">
+        {{ section.settings.other }}
+        <a class="any-question__link fw-600 cl-black text-underline" href="{{ section.settings.link }}">
+          {{- section.settings.text_link -}}
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main FAQ",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "other",
+      "label": "Other questions",
+      "default": "Do you have any other questions?"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text_link",
+      "label": "text link",
+      "default": "Contact us now"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link to"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "purchase"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "question1",
+          "label": "Question 1",
+          "default": "what are the shipping time and cost available of dercalo ?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer1",
+          "label": "Description 1"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "question2",
+          "label": "Question 2"
+        },
+        {
+          "type": "richtext",
+          "id": "answer2",
+          "label": "Description 2"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "question3",
+          "label": "Question 3"
+        },
+        {
+          "type": "richtext",
+          "id": "answer3",
+          "label": "Description 3"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "question4",
+          "label": "Question 4"
+        },
+        {
+          "type": "richtext",
+          "id": "answer4",
+          "label": "Description 4"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "question5",
+          "label": "Question 5"
+        },
+        {
+          "type": "richtext",
+          "id": "answer5",
+          "label": "Description 5"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main FAQ",
+      "blocks": [
+        {
+          "type": "tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

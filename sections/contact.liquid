@@ -1,0 +1,174 @@
+<section class="contact p100">
+  <div class="container">
+    <div class="contact-top text-center">
+      <h2 class="h1 mb-15">
+        {{ section.settings.heading }}
+      </h2>
+      <p class="description">{{ section.settings.description_1 }}
+        <span class="text-underline description">{{ section.settings.description_2 }}</span>
+      </p>
+    </div>
+    <div class="contact-main mt-50">
+      <div class="row">
+        {% for block in section.blocks %}
+
+
+          <div class="col-{{ section.settings.columns_mobile }} col-md-{{ section.settings.columns_tablet }} col-lg-{{ section.settings.columns_desktop }}">
+            <div class="contact-item text-center h100">
+              <div class="contact-item__icon mb-30">
+                <img
+                  src="{{ block.settings.image | image_url }}"
+                  alt="{{ block.settings.image | image_alt }}"
+                  class="contact-icon__img">
+              </div>
+              <h3 class="contact-item__title h4">{{ block.settings.heading }}</h3>
+              <a href="{{ block.settings.link }}" class="contact-item__des mt-5 description">{{ block.settings.subheading }}</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if section.settings.check_open == true %}
+      <div class="contact-bottom text-center mt-80">
+        <h4 class="open mb-16 uppercase">{{ section.settings.open }}</h4>
+        <div class="open-time description">{{ section.settings.open_time_1 }}</div>
+        <div class="open-time description">{{ section.settings.open_time_2 }}</div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Contact",
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "type": "contact",
+        "name": "contact",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+            "type": "inline_richtext",
+            "id": "heading",
+            "default": "send us an email",
+            "label": "Heading"
+          }, {
+            "type": "inline_richtext",
+            "id": "subheading",
+            "default": "Fill in the form",
+            "label": "Text"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link contact"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "our consultants will be happy to help you"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "description_1",
+        "label": "Description 1",
+        "default": "Before contacting us we recommend that you read the"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "description_2",
+        "label": "Description 2",
+        "default": "frequently asked questions"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_open",
+        "label": "Show/hide open time",
+        "default": true
+      }, {
+        "type": "inline_richtext",
+        "id": "open",
+        "label": "Open heading",
+        "default": "customer service opening hours"
+      }, {
+        "type": "inline_richtext",
+        "id": "open_time_1",
+        "label": "Open time 1",
+        "default": "Monday-Friday: 09: 00-18: 30"
+      }, {
+        "type": "inline_richtext",
+        "id": "open_time_2",
+        "label": "Open time 2"
+      }, {
+        "type": "select",
+        "id": "columns_desktop",
+        "label": "Columns desktop",
+        "options": [
+          {
+            "value": "6",
+            "label": "2"
+          }, {
+            "value": "4",
+            "label": "3"
+          }, {
+            "value": "3",
+            "label": "4"
+          }
+        ],
+        "default": "3"
+      }, {
+        "type": "select",
+        "id": "columns_tablet",
+        "label": "Columns tablet",
+        "options": [
+          {
+            "value": "6",
+            "label": "2"
+          }, {
+            "value": "4",
+            "label": "3"
+          }
+        ],
+        "default": "6"
+      }, {
+        "type": "select",
+        "id": "columns_mobile",
+        "label": "Columns mobile",
+        "options": [
+          {
+            "value": "12",
+            "label": "1"
+          }, {
+            "value": "6",
+            "label": "2"
+          }
+        ],
+        "default": "12"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Contact",
+        "blocks": [
+          {
+            "type": "contact"
+          }, {
+            "type": "contact"
+          }, {
+            "type": "contact"
+          }, {
+            "type": "contact"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

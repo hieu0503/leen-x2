@@ -1,0 +1,55 @@
+{% comment %}
+  {% liquid
+    echo recommendations.performed
+    echo ' - '
+    echo recommendations.products_count
+  %}
+{% endcomment %}
+
+<div
+  class="product-recommendations"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
+>
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <section class="related-product">
+      <div class="container">
+        <h2 class="h1 text-center uppercase mb-45 related-product__title">{{ section.settings.heading }}</h2>
+        <div class="shop-collection shop-main">
+          {% for product in recommendations.products %}
+            <div class="product-item position-relative">
+              {% render 'card-product', card_product: product, section_id: section.id %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Related Products",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "related products"
+    },
+    {
+      "type": "range",
+      "id": "product_to_show",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 4,
+      "label": "Product to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related Products"
+    }
+  ]
+}
+{% endschema %}

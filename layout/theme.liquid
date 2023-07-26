@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="" name="theme-color">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %}
+        &ndash; tagged "{{ current_tags | join: ', ' }}"
+      {% endif -%}
+      {%- if current_page != 1 %}
+        &ndash; Page
+        {{ current_page }}
+      {% endif -%}
+      {%- unless page_title contains shop.name %}
+        &ndash;
+        {{ shop.name }}
+      {% endunless -%}
+    </title>
+
+    {{ 'root.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'responsive.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+
+
+  </head>
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+
+    {% sections 'header-group' %}
+
+    <main
+      class="content-for-layout focus-none"
+      id="MainContent"
+      role="main"
+      tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    <script src="{{ 'app.js' | asset_url }}" defer="defer"></script>
+
+  </body>
+</html>

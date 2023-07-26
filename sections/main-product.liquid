@@ -1,0 +1,291 @@
+<section class="breadcrumb-main mt-100 mb-60">
+  <div class="container">
+    <div class="breadcrumb">
+      <a
+        class="breadcrumb-item uppercase breadcrumb-link fw-400 position-relative"
+        href="{{ routes.root_url }}"
+        >Home</a
+      >
+      {% for collection in product.collections %}
+        <a
+          class="breadcrumb-item uppercase breadcrumb-link fw-400 position-relative"
+          href="{{ collection.url }}"
+        >
+          {{- collection.title -}}
+        </a>
+      {% endfor %}
+      <span class="breadcrumb-item uppercase breadcrumb-span fw-400">{{ product.title }}</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="product-detail-main d-grid">
+      <div class="product-detail-slider area1">
+        <div class="main-slider mb-20">
+          <img
+            id="mainImage"
+            src=""
+            alt="Large Image"
+            class="w100"
+          >
+        </div>
+        <div class="thumbnail-slider position-relative">
+          <div class="thumbnail-slider-items" id="thumbnailSliderItems">
+            {% comment %} <img class="thumbnail" src="path/to/small-image-1.jpg" alt="Thumbnail 1"> {% endcomment %}
+            {% for media in product.media %}
+              {{
+                media.preview_image
+                | image_url: width: 580
+                | image_tag: class: 'h100 obj-cover thumbnail', alt: media.alt
+                | escape
+              }}
+            {% endfor %}
+          </div>
+          <button id="prev">{% render 'Prev_arrow' %}</button>
+          <button id="next">{% render 'Next_arrow' %}</button>
+        </div>
+      </div>
+
+      <div class="product-info area2">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'title' %}
+              <h1 class="h1 mb-20 product-title">{{ product.title | escape }}</h1>
+            {% when 'price' %}
+              <p class="product-price fw-400 mb-50">{{ product.price | money }}</p>
+            {% when 'variant_picker' %}
+              {% for option in product.options_with_values %}
+                <div class="product-size mb-40">
+                  <div class="product-size__text d-flex justify-between align-center">
+                    <div class="product-size__title fw-600 cl-black uppercase">{{ option.name }}</div>
+                    <button class="product-size__link p-0 position-relative h5 border-none">
+                      Find your {{ option.name }}
+                    </button>
+                  </div>
+                  <select
+                    class="product-size__size w100"
+                    id="option--{{ section.id }}-{{ forloop.index0 }}"
+                    name="options[{{ option.name | escape }}]"
+                    form="{{ product_form_id }}"
+                  >
+                    {% for value in option.values %}
+                      <option
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}
+                          selected="selected"
+                        {% endif %}
+                      >
+                        {% if option_disabled -%}
+                          {{- 'products.product.value_unavailable' | t: option_value: value -}}
+                        {%- else -%}
+                          {{- value -}}
+                        {%- endif %}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            {% when 'quantity_selector' %}
+              <div class="product-button d-grid mb-30">
+                {% form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' %}
+                  <button
+                    class="btn btn-add h5"
+                    name="add"
+                    type="submit"
+                    data-product-id="{{ product.id }}"
+                    {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+                      disabled
+                    {% endif %}
+                  >
+                    add to cart
+                  </button>
+                  {%- if block.settings.show_checkout -%}
+                    {{ form | payment_button }}
+                    {% comment %} <a href="shop.html" class="btn btn-buy uppercase">buy now</a> {% endcomment %}
+                  {%- endif -%}
+                {% endform %}
+
+                <div class="number d-flex justify-between align-center">
+                  <button class="decrease border-none">-</button>
+                  <span class="quantity">1</span>
+                  <button class="increase border-none">+</button>
+                </div>
+
+                <button class="love btn btn-love">{% render 'icon-love' %}</button>
+              </div>
+            {% when 'apr' %}
+              <div class="h5 apr mb-50 uppercase">get this product by 1st apr !</div>
+            {% when 'description' %}
+              {% if product.description != blank %}
+                <div class="description product-description mb-40">
+                  {{ product.description }}
+                </div>
+              {% endif %}
+            {% when 'gift' %}
+              <div class="product-gift fw-600 h4 mb-30 uppercase">our gift box exclusively for you</div>
+            {% when 'gift_image' %}
+              {% if product.gift != blank %}
+                <img
+                  src="{{ block.settings.image_gift | image_url }}"
+                  alt="{{ block.settings.image_gift | image_alt }}"
+                  class="product-gift-img w100"
+                >
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% javascript %}
+  const mainImage = document.getElementById('mainImage');
+  const thumbnailSliderItems = document.getElementById('thumbnailSliderItems');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+
+  let currentIndex = 0;
+  let selectedImageIndex = 0; // Lưu trữ vị trí ảnh được chọn
+  const itemsToShow = 4;
+  const totalItems = thumbnails.length;
+
+  thumbnails.forEach((thumbnail, index) => {
+    thumbnail.addEventListener('click', () => {
+      selectedImageIndex = index; // Cập nhật vị trí ảnh được chọn
+      updateSlider();
+    });
+  });
+
+  function updateSlider() {
+    const offset = currentIndex * (100 / itemsToShow);
+    thumbnailSliderItems.style.transform = `translateX(-${offset}%)`;
+
+    // Remove the "selected" class from all thumbnails and add it to the current one
+    thumbnails.forEach((thumbnail, index) => {
+      if (index === selectedImageIndex) {
+        // Sử dụng vị trí ảnh được chọn để cập nhật ảnh lớn
+        thumbnail.classList.add('selected');
+        mainImage.src = thumbnail.src; // Update the main image
+      } else {
+        thumbnail.classList.remove('selected');
+      }
+    });
+  }
+
+  // Implement prev and next buttons
+  const prevButton = document.getElementById('prev');
+
+  prevButton.addEventListener('click', () => {
+    currentIndex = Math.max(currentIndex - 1, 0);
+    updateSlider();
+  });
+
+  const nextButton = document.getElementById('next');
+  // const nextButton = document.createElement('button');
+  // nextButton.classList.add('next');
+  nextButton.addEventListener('click', () => {
+    currentIndex = Math.min(currentIndex + 1, totalItems - itemsToShow);
+    updateSlider();
+  });
+
+  // Append prev and next buttons to the thumbnail-slider
+  const thumbnailSlider = document.querySelector('.thumbnail-slider');
+  thumbnailSlider.appendChild(prevButton);
+  thumbnailSlider.appendChild(nextButton);
+
+  // Initial update to show the first set of thumbnails
+  updateSlider();
+
+  // quantity
+
+  // Lấy các phần tử trong HTML
+  const decreaseButton = document.querySelector('.decrease');
+  const increaseButton = document.querySelector('.increase');
+  const quantitySpan = document.querySelector('.quantity');
+
+  // Xử lý sự kiện khi bấm vào nút giảm
+  decreaseButton.addEventListener('click', function () {
+    // Lấy giá trị hiện tại của số lượng
+    let currentValue = parseInt(quantitySpan.textContent);
+
+    // Đảm bảo số lượng không âm
+    if (currentValue > 1) {
+      currentValue -= 1;
+      quantitySpan.textContent = currentValue;
+    }
+  });
+
+  // Xử lý sự kiện khi bấm vào nút tăng
+  increaseButton.addEventListener('click', function () {
+    // Lấy giá trị hiện tại của số lượng
+    let currentValue = parseInt(quantitySpan.textContent);
+
+    // Tăng số lượng
+    currentValue += 1;
+    quantitySpan.textContent = currentValue;
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Main product",
+  "blocks": [
+    {
+      "type": "title",
+      "name": "title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "price",
+      "limit": 1
+    },
+    {
+      "type": "quantity_selector",
+      "name": "quantity_selector",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_checkout",
+          "default": true,
+          "label": "Show Checkout"
+        }
+      ]
+    },
+    {
+      "type": "variant_picker",
+      "name": "variant_picker",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "description",
+      "limit": 1
+    },
+    {
+      "type": "apr",
+      "name": "apr",
+      "limit": 1
+    },
+    {
+      "type": "gift",
+      "name": "gift",
+      "limit": 1
+    },
+    {
+      "type": "gift_image",
+      "name": "gift_image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_gift",
+          "label": "Image gift"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

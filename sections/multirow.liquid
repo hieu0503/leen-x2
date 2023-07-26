@@ -1,0 +1,89 @@
+<section class="history p100 bg-f5">
+  <div class="container">
+    <div class="history-main">
+      {% for block in section.blocks %}
+        <div class="history-item d-flex">
+          <div class="history-item__content his_items">
+            <div class="history-icon">
+              <img
+                src="{{ block.settings.icon | image_url }}"
+                alt="{{ block.settings.icon | image_alt}}"
+                class="history-icon-img">
+            </div>
+            <h2 class="history-title uppercase title-1 mb-25 mt-30">{{ block.settings.heading }}</h2>
+            <p class="history-des description">
+              <span class="history-des-title fw-500 cl-black d-block description">{{ block.settings.content }}</span>
+              {{ block.settings.description }}
+            </p>
+          </div>
+          <div class="history-item__img his_items">
+            {% if block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url }}"
+                alt="{{ block.settings.image | image_alt}}"
+                class="history-item__img his_items-img w100 h100 obj-cover">
+            {% else %}
+              {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg w100 h100' }}
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Multirow",
+    "class": "multirow",
+    "blocks": [
+      {
+        "type": "row",
+        "name": "Multirow blocks",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "default": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "content",
+            "default": "DE CARLO means elegance",
+            "label": "Content"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "description",
+            "default": "exhibited thanks to the shining and refined stones that portray the contemporary era, sensual, simple and eye-catching creations that perfectly frame the female body, enhancing its natural beauty.",
+            "label": "Description"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multirow",
+        "blocks": [
+          {
+            "type": "row"
+          }, {
+            "type": "row"
+          }, {
+            "type": "row"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

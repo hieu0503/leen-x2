@@ -1,0 +1,65 @@
+<section class="collection position-relative">
+  <div class="collection-banner position-absolute w100 h100">
+    {% if section.settings.banner %}
+      <img
+        class="w100 h100"
+        src="{{ section.settings.banner | image_url }}"
+        alt="{{ section.settings.banner | image_alt }}"
+      >
+    {% else %}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg w100 h100' }}
+    {% endif %}
+  </div>
+  <div class="container">
+    <div class="collection-main w100">
+      <h2 class="h3 cl-w mb-20">{{ section.settings.heading }}</h2>
+      <p class="description collection-text mb-30">{{ section.settings.subheading }}</p>
+      <a href="{{ section.settings.link }}" class="btn btn-see position-relative">
+        {{- section.settings.button }}
+        <span>{% render 'seemore' %}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner main",
+  "class": "bannermain",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "New collection 2021",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "default": "See more",
+      "label": "Text button"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner main"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+<section class="banner-page text-center position-relative">
+  <div class="collection-banner position-absolute w100 h100 t-0">
+    {% if section.settings.banner %}
+      <img
+        class="w100 h100"
+        src="{{ section.settings.banner | image_url }}"
+        alt="{{ section.settings.banner | image_alt }}"
+      >
+    {% else %}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg w100 h100' }}
+    {% endif %}
+  </div>
+  <h2 class="h2 banner-page-title position-relative z-1">
+    {% if section.settings.heading != blank %}
+      {{ section.settings.heading }}
+    {% else %}
+      {{ page.title }}
+    {% endif %}
+  </h2>
+</section>
+
+{% schema %}
+{
+  "name": "Banner Page",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Page"
+    }
+  ]
+}
+{% endschema %}

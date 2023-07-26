@@ -1,0 +1,219 @@
+{% style %}
+  .form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+  }
+{% endstyle %}
+
+<section class="become p100 container">
+  <div class="d-grid container-grid">
+    <div class="grid10">
+      <div class="become-top text-center">
+        <h2 class="h1 become-title mb-15">{{ section.settings.heading }}</h2>
+        <p class="description">{{ section.settings.description }}</p>
+      </div>
+      <div class="become-form mt-100">
+        {% form 'contact', id: 'ContactForm' %}
+          {%- if form.posted_successfully? -%}
+            <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+              {% render 'icon-success' %}
+              {{ 'templates.contact.form.post_success' | t }}
+            </h2>
+          {%- elsif form.errors -%}
+            <div class="form__message">
+              <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+                {% render 'icon-error' %}
+                {{ 'templates.contact.form.error_heading' | t }}
+              </h2>
+            </div>
+          {%- endif -%}
+          {{ form.errors | default_errors }}
+          <div class="row">
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item position-relative">
+                <span class="arrow-bottom position-absolute">
+                  {% render 'arrow-bottom' %}
+                </span>
+                <h3 class="form-item__title h4 uppercase">title</h3>
+                <select name="contact[title]" id="title" class="form-select h5 form-control-item">
+                  <option class="form-select__option h5" value="miss" selected>Miss</option>
+                  <option class="form-select__option h5" value="miss2">Miss 2</option>
+                  <option class="form-select__option h5" value="miss3">Miss 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item">
+                <h3 class="form-item__title h4 uppercase">first name*</h3>
+                <input
+                  class="form-input-item h5 form-control-item"
+                  type="text"
+                  name="contact[first_name]"
+                  id="first_name"
+                  required
+                  placeholder="Insert your name"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item">
+                <h3 class="form-item__title h4 uppercase">sur name*</h3>
+                <input
+                  class="form-input-item h5 form-control-item"
+                  type="text"
+                  name="contact[sur_name]"
+                  id="sur_name"
+                  required
+                  placeholder="Insert your surname"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item">
+                <h3 class="form-item__title h4 uppercase">email*</h3>
+                <input
+                  class="form-input-item h5 form-control-item"
+                  type="email"
+                  name="contact[email]"
+                  id="email"
+                  required
+                  placeholder="Insert your email"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item">
+                <h3 class="form-item__title h4 uppercase">phone</h3>
+                <input
+                  class="form-input-item h5 form-control-item"
+                  type="tel"
+                  name="contact[phone]"
+                  id="phone"
+                  placeholder="Insert your phone"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item">
+                <h3 class="form-item__title h4 uppercase">city</h3>
+                <input
+                  class="form-input-item h5 form-control-item"
+                  type="text"
+                  name="contact[city]"
+                  id="city"
+                  placeholder="Insert your city"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item">
+                <h3 class="form-item__title h4 uppercase">company</h3>
+                <input
+                  class="form-input-item h5 form-control-item"
+                  type="text"
+                  name="contact[company]"
+                  id="company"
+                  placeholder="Insert your company here"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item position-relative">
+                <span class="arrow-bottom position-absolute">
+                  {% render 'arrow-bottom' %}
+                </span>
+                <h3 class="form-item__title h4 uppercase">province</h3>
+                <select name="contact[province]" id="province" class="form-select h5 form-control-item">
+                  <option class="form-select__option h5" value="Agriento" selected>Agriento</option>
+                  <option class="form-select__option h5" value="Agriento2">Agriento 2</option>
+                  <option class="form-select__option h5" value="Agriento3">Agriento 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item">
+                <h3 class="form-item__title h4 uppercase">vat number</h3>
+                <input
+                  class="form-input-item h5 form-control-item"
+                  type="number"
+                  name="contact[vat_number]"
+                  id="vat_number"
+                  placeholder="Insert your VAT number"
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-40">
+              <div class="become-form__item position-relative">
+                <span class="arrow-bottom position-absolute">
+                  {% render 'arrow-bottom' %}
+                </span>
+                <h3 class="form-item__title h4 uppercase">request</h3>
+                <select name="contact[request]" id="request" class="form-select h5 form-control-item">
+                  <option class="form-select__option h5" value="Dealer" selected>Dealer</option>
+                  <option class="form-select__option h5" value="Dealer2">Dealer 2</option>
+                  <option class="form-select__option h5" value="Dealer3">Dealer 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 mb-50">
+              <div class="become-form__item">
+                <h3 class="form-item__title h4 uppercase">message</h3>
+                <textarea
+                  class="form-textarea form-control-item h5"
+                  name="contact[body]"
+                  id="message"
+                  cols="30"
+                  rows="5"
+                  placeholder="Write your message here"
+                ></textarea>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="become-form__item mb-20 d-flex">
+                <input class="form-checkbox" type="checkbox" name="contact[contact_checkbox_1]" id="">
+                <span class="become-checkbox h5">
+                  I agree to receive communications regarding exclusive offers, services and news</span
+                >
+              </div>
+              <div class="become-form__item d-flex">
+                <input class="form-checkbox" type="checkbox" name="contact[contact_checkbox_1]" id="">
+                <span class="become-checkbox h5">
+                  After reading the privacy policy , I consent to the processing of my personal data.
+                </span>
+              </div>
+              <input type="submit" class="btn btn-become mt-50" value="send inquiry">
+            </div>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "become official de carlo dealer"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "Exclusive jewels with a contemporary design, handcrafted finished and able to arouse emotions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form"
+    }
+  ]
+}
+{% endschema %}

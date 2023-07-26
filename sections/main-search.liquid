@@ -1,0 +1,84 @@
+{{ 'search.css' | asset_url | stylesheet_tag }}
+
+
+<div class="template-search p100">
+  <div class="container">
+    <div class="template-search__header">
+      <h1 class="h2 text-center search-title">
+        {%- if search.performed -%}
+          Search Results
+        {%- else -%}
+          Search
+        {%- endif -%}
+      </h1>
+      <div class="template-search__search text-center">
+
+        <main-search>
+          <form
+            action="{{ routes.search_url }}"
+            method="get"
+            role="search"
+            class="search">
+            <div class="field w100 d-flex position-relative">
+              <input class="search__input field__input w100"
+                id="Search-In-Template"
+                type="search"
+                placeholder="Search product..."
+                name="q">
+              {% comment %} <button type="reset" class="reset__button" aria-label="reset">
+              <svg class="icon icon-close" aria-hidden="true" focusable="false">
+              <use xlink:href="#icon-reset">
+              </svg>
+              </button> {% endcomment %}
+              <button
+                type="submit"
+                class="search__button field__button"
+                aria-label="search">
+                {% render 'icon-search' %}
+              </button>
+            </div>
+          </form>
+        </main-search>
+      </div>
+    </div>
+
+    {%- if search.performed -%}
+      {% comment %} {%- if search.results_count > 0 -%}
+      <p role="status" class="status">{{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}</p>
+      {%- endif -%} {% endcomment %}
+      {%- if search.results_count == 0 and search.filters == empty -%}
+        <p role="status" class="status">{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+      {%- endif -%}
+    {%- endif -%}
+
+
+    {%- if search.performed -%}
+
+      <div class="search-main">
+        <div class="product-grid-container" id="ProductGridContainer">
+          <div
+            class="template-search__results"
+            id="product-grid"
+            data-id="{{ section.id }}">
+            <div class="d-grid product-grid">
+              {%- for item in search.results -%}
+                <div class="grid__item">
+                  {% render 'card-product' 
+                   , card_product: item %}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Main search",
+    "class": "main-search",
+    "settings": []
+  }
+{% endschema %}

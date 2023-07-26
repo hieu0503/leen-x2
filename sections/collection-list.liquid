@@ -1,0 +1,63 @@
+<section class="shop-category p100">
+  <div class="container">
+    <h1 class="h1 cl-primary mb-45 text-center">{{ section.settings.heading }}</h1>
+    <div class="shop-category__main d-grid">
+      {% if section.settings.collection_list == blank %}
+        {% for i in (1..4) %}
+          <div class="shop-category__item h100 text-center position-relative">
+            <a class="border-none h100 d-inline-block" href="{{ routes.all_products_collection_url }}">
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg h100 w100' }}
+              <span class="btn btn-cate">
+                Product name
+              </span>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for collection in section.settings.collection_list %}
+          <div class="shop-category__item h100 text-center position-relative">
+            <a class="border-none h100 d-inline-block" href="{{ collection.url}}">
+              {% if collection.image == blank %}
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg h100 w100' }}
+              {% else %}
+                <img
+                  class="w100 h100 obj-cover"
+                  src="{{ collection.image | img_url }}"
+                  alt="">
+              {% endif %}
+              <span class="btn btn-cate">
+                {{ collection.title }}
+              </span>
+            </a>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Collection",
+    "class": "Category",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "shop by category"
+      }, {
+        "type": "collection_list",
+        "id": "collection_list",
+        "label": "Collections",
+        "limit": 4
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection"
+      }
+    ]
+  }
+{% endschema %}

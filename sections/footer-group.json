@@ -1,0 +1,53 @@
+{
+    "type": "footer",
+    "name": "Footer",
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "c2d6fcdd-ad92-4448-a6a3-eb75e80ed5f8": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Customer care",
+              "menu": "footer"
+            }
+          },
+          "2b5ee027-980c-4ac2-939b-2886bb461ad9": {
+            "type": "text",
+            "settings": {
+              "heading": "Legal information",
+              "subtext": "<p>Company name: De Carlo Nicholas<\/p><p>VAT number: 07020260480<\/p><p>REA: FI-674952<\/p><p>Registered office: Via di San Quirico a Ruballa 15, 50012, Bagno a Ripoli (FI), Italy<\/p>"
+            }
+          },
+          "b23c031c-f0d3-4094-af75-6066acd36f91": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Customer care",
+              "menu": "footer-menu-2"
+            }
+          },
+          "e3da4190-4ce8-4cbc-8dc0-2b6b5bf5465a": {
+            "type": "newsletter",
+            "settings": {
+              "heading_form": "subscribe for newsletter",
+              "show_social": true,
+              "heading_social": "Social"
+            }
+          }
+        },
+        "block_order": [
+          "c2d6fcdd-ad92-4448-a6a3-eb75e80ed5f8",
+          "2b5ee027-980c-4ac2-939b-2886bb461ad9",
+          "b23c031c-f0d3-4094-af75-6066acd36f91",
+          "e3da4190-4ce8-4cbc-8dc0-2b6b5bf5465a"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/logo-2.svg",
+          "footer_text": "De Carlo Nicholas- VAT number: 07020260480- REA: FI-674952 - Registered office: Via di San Quirico a Ruballa 15, 50012, Bagno a Ripoli (FI), Italy"
+        }
+      }
+    },
+    "order": [
+      "footer"
+    ]
+  }

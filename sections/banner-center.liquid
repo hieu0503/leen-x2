@@ -1,0 +1,109 @@
+{% style %}
+  .banner-center {
+    padding: {{ section.settings.padding }}px 0;
+  }
+
+  @media screen and (max-width: 576px) {
+    .banner-center {
+      padding: {{ section.settings.padding_mobile }}px 0;
+    }
+  }
+{% endstyle %}
+
+<div class="banner-center text-center position-relative">
+  <div class="collection-banner position-absolute w100 h100 t-0">
+    {% if section.settings.banner %}
+      <img
+        class="w100 h100"
+        src="{{ section.settings.banner | image_url }}"
+        alt="{{ section.settings.banner | image_alt }}"
+      >
+    {% else %}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg w100 h100' }}
+    {% endif %}
+  </div>
+  <h2 class="title-1 why-title mb-15 cl-w z-1 position-relative">{{ section.settings.heading }}</h2>
+  <div class="description why-des z-1 position-relative {% if section.settings.check_uppercase %}uppercase{% endif %}">
+    {{ section.settings.subheading }}
+  </div>
+  {% if section.settings.checkbox_button %}
+    <a href="{{ section.settings.link }}" class="mt-40 btn btn-bts btn-banner z-1 position-relative">
+      {{- section.settings.button -}}
+    </a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Banner Center",
+  "class": "bannercenter",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 50,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "padding",
+      "default": 175
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "padding mobile",
+      "default": 70
+    },
+    {
+      "type": "image_picker",
+      "id": "banner",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "why choose us ?",
+      "label": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "check_uppercase",
+      "default": false,
+      "label": "Uppercase"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu",
+      "label": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "checkbox_button",
+      "default": true,
+      "label": "Show button"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "default": "back to shopping now",
+      "label": "Text button"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner center"
+    }
+  ]
+}
+{% endschema %}

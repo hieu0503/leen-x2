@@ -1,0 +1,168 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "390df663-2fbe-4a14-8dd1-9f4c36c2834f": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "fec31845-270f-4c61-a8fa-650e5e699591": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "4b282543-33bd-441b-badc-529193e63009": {
+          "type": "quantity_selector",
+          "settings": {
+            "show_checkout": true
+          }
+        },
+        "350b2950-047f-41a9-a2b0-8da66de996b5": {
+          "type": "variant_picker",
+          "settings": {
+          }
+        },
+        "ac354af9-d9e9-4c9b-bc30-921b22d5cd46": {
+          "type": "apr",
+          "settings": {
+          }
+        },
+        "4247e561-ad2d-489c-85e8-2c1895214323": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "0617d9f4-670e-41c8-a1b9-b376353d3751": {
+          "type": "gift",
+          "settings": {
+          }
+        },
+        "ad0928de-b85b-45cc-bd09-2c3871312a26": {
+          "type": "gift_image",
+          "settings": {
+            "image_gift": "shopify:\/\/shop_images\/small-business-interior.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "390df663-2fbe-4a14-8dd1-9f4c36c2834f",
+        "fec31845-270f-4c61-a8fa-650e5e699591",
+        "4b282543-33bd-441b-badc-529193e63009",
+        "350b2950-047f-41a9-a2b0-8da66de996b5",
+        "ac354af9-d9e9-4c9b-bc30-921b22d5cd46",
+        "4247e561-ad2d-489c-85e8-2c1895214323",
+        "0617d9f4-670e-41c8-a1b9-b376353d3751",
+        "ad0928de-b85b-45cc-bd09-2c3871312a26"
+      ],
+      "settings": {
+      }
+    },
+    "29ad15d8-17c3-4bab-8f2b-6b4466a63e58": {
+      "type": "main-tab",
+      "blocks": {
+        "template--20080679616822__29ad15d8-17c3-4bab-8f2b-6b4466a63e58-tab-1": {
+          "type": "tab",
+          "settings": {
+            "captions": "product information",
+            "image": "shopify:\/\/shop_images\/Consumer-data-experience-scaled.jpg",
+            "heading": "product info",
+            "description": "<ul><li>Sed ut perspiciatis unde omnis iste natus error sit<\/li><li>Sed ut perspiciatis unde omnis iste natus error sit<\/li><li>Sed ut perspiciatis unde omnis iste natus error sit<\/li><li>Sed ut perspiciatis unde omnis iste natus error sit<\/li><\/ul>"
+          }
+        },
+        "template--20080679616822__29ad15d8-17c3-4bab-8f2b-6b4466a63e58-tab-2": {
+          "type": "tab",
+          "settings": {
+            "captions": "OUR SERVICE",
+            "heading": "our service",
+            "description": "<p>Sed ut perspiciatis unde omnis iste natus error sit<\/p><p>Sed ut perspiciatis unde omnis iste natus error sit<\/p>"
+          }
+        },
+        "template--20080679616822__29ad15d8-17c3-4bab-8f2b-6b4466a63e58-tab-3": {
+          "type": "tab",
+          "settings": {
+            "captions": "PAYMENT METHOD",
+            "image": "shopify:\/\/shop_images\/AI-2023-Predictions.jpg",
+            "heading": "payment method",
+            "description": "<p>Sed ut perspiciatis unde omnis iste natus error sit<\/p><p>Sed ut perspiciatis unde omnis iste natus error sit<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--20080679616822__29ad15d8-17c3-4bab-8f2b-6b4466a63e58-tab-1",
+        "template--20080679616822__29ad15d8-17c3-4bab-8f2b-6b4466a63e58-tab-2",
+        "template--20080679616822__29ad15d8-17c3-4bab-8f2b-6b4466a63e58-tab-3"
+      ],
+      "settings": {
+      }
+    },
+    "f062d055-e99c-4620-95ba-471b3cc8ddf7": {
+      "type": "related-product",
+      "settings": {
+        "heading": "related products",
+        "product_to_show": 4
+      }
+    },
+    "099460b2-9154-4ad0-9bfd-1c23f71b9d23": {
+      "type": "service",
+      "blocks": {
+        "template--20080679616822__099460b2-9154-4ad0-9bfd-1c23f71b9d23-service-1": {
+          "type": "service",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/parcel_1.svg",
+            "heading_inline_richtext": "free shipping in Italy",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "button": "Read more",
+            "link": ""
+          }
+        },
+        "template--20080679616822__099460b2-9154-4ad0-9bfd-1c23f71b9d23-service-2": {
+          "type": "service",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/parcel_1.svg",
+            "heading_inline_richtext": "free shipping in Italy",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "button": "Read more",
+            "link": ""
+          }
+        },
+        "template--20080679616822__099460b2-9154-4ad0-9bfd-1c23f71b9d23-service-3": {
+          "type": "service",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/parcel_1.svg",
+            "heading_inline_richtext": "free shipping in Italy",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "button": "Read more",
+            "link": ""
+          }
+        },
+        "template--20080679616822__099460b2-9154-4ad0-9bfd-1c23f71b9d23-service-4": {
+          "type": "service",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/parcel_1.svg",
+            "heading_inline_richtext": "free shipping in Italy",
+            "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "button": "Read more",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20080679616822__099460b2-9154-4ad0-9bfd-1c23f71b9d23-service-1",
+        "template--20080679616822__099460b2-9154-4ad0-9bfd-1c23f71b9d23-service-2",
+        "template--20080679616822__099460b2-9154-4ad0-9bfd-1c23f71b9d23-service-3",
+        "template--20080679616822__099460b2-9154-4ad0-9bfd-1c23f71b9d23-service-4"
+      ],
+      "settings": {
+        "heading": "our services"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "29ad15d8-17c3-4bab-8f2b-6b4466a63e58",
+    "f062d055-e99c-4620-95ba-471b3cc8ddf7",
+    "099460b2-9154-4ad0-9bfd-1c23f71b9d23"
+  ]
+}

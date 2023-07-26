@@ -1,0 +1,23 @@
+<section class="collection-product position-relative">
+  <div class="collection-product-banner position-absolute w100 h100 t-0">
+    {% if section.settings.banner %}
+      <img
+        class="w100 h100"
+        src="{{ collection.image | image_url }}"
+        alt="{{ collection.image | image_alt }}">
+    {% else %}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg w100 h100' }}
+    {% endif %}
+  </div>
+  <div class="container">
+    <h1 class="h1 collection-product-title cl-w mb-5">{{- collection.title | escape -}}</h1>
+    <div class="collection-product__descrition description cl-gray">{{ collection.description }}</div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Main collection banner",
+    "class": "main-collection-banner"
+  }
+{% endschema %}
