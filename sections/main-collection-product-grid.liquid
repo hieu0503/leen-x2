@@ -16,23 +16,27 @@
         </span>
         {{ section.settings.product_count }}
       </h5>
-      <div class="filter-block d-flex">
-        <span class="h5 p-0 fw-600">{{ section.settings.sort }}</span>
-        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-        <select class="filter-sort h5 border-none p-0 fw-600">
-          {%- for option in collection.sort_options -%}
-            <option
-              value="{{ option.value | escape }}"
-              {% if option.value == sort_by %}
-                selected="selected"
-              {% endif %}
-            >
-              {{ option.name | escape }}
-            </option>
-          {%- endfor -%}
-        </select>
-        <button class="btn filter-filter h5 border-none p-0 fw-600">{{ section.settings.button }}</button>
-      </div>
+      <facet-filters-form class="facets facets-vertical-sort page-width small-hide no-js-hidden">
+        <form class="facets-vertical-form" id="FacetSortForm">
+          <div class="filter-block d-flex">
+            <span class="h5 p-0 fw-600">{{ section.settings.sort }}</span>
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <select class="filter-sort h5 border-none p-0 fw-600">
+              {%- for option in collection.sort_options -%}
+                <option
+                  value="{{ option.value | escape }}"
+                  {% if option.value == sort_by %}
+                    selected="selected"
+                  {% endif %}
+                >
+                  {{ option.name | escape }}
+                </option>
+              {%- endfor -%}
+            </select>
+            <button class="btn filter-filter h5 border-none p-0 fw-600">{{ section.settings.button }}</button>
+          </div>
+        </form>
+      </facet-filters-form>
     </div>
     <div class="shop-collection shop-main">
       {%- if collection.products.size == 0 -%}
@@ -47,7 +51,7 @@
         </div>
       {%- else -%}
         {% for product in collection.products %}
-            {% render 'card-product', card_product: product, section_id: section.id %}
+          {% render 'card-product', card_product: product, section_id: section.id %}
         {% endfor %}
       {% endif %}
     </div>

@@ -109,6 +109,10 @@
   background-blend-mode: hard-light;
 }
 
+.related-product {
+  padding-bottom: 100px;
+}
+
 .shop-category__main,
 .service-main,
 .product-grid {

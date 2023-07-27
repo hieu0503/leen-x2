@@ -109,6 +109,7 @@ h5,
   font-size: var(--heading-h1);
   line-height: 1.3em;
 }
+.errors ul li,
 .description {
   font-weight: 400;
   font-size: var(--heading-h5);
@@ -415,4 +416,11 @@ h5,
 
 .break {
   word-break: break-word;
+}
+
+.customer a {
+  cursor: pointer;
+    display: inline-block;
+    font-size: 1.4rem;
+    font-family: 'Lato';
 }
