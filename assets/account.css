@@ -20,3 +20,85 @@
     padding-right: 3.2rem;
   }
 }
+.customer .field {
+  display: flex;
+}
+.customer .field {
+  margin: 2rem 0 0;
+}
+
+.addresses h2 {
+  text-align: left;
+}
+
+.addresses form > div {
+  width: 100%;
+  text-align: left;
+}
+
+label[for="AddressCountryNew"],
+label[for="AddressProvinceNew"],
+.AddressCountry__update {
+  display: block;
+  font-size: var(--heading-h4);
+  line-height: var(--lh-h4);
+  margin-bottom: 0.6rem;
+  margin-top: 2rem;
+}
+
+.text-area,
+.select {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.customer select + svg {
+  height: 0.6rem;
+  pointer-events: none;
+  position: absolute;
+  top: calc(50% - 0.2rem);
+  right: calc(var(--inputs-border-width) + 1.5rem);
+}
+
+.customer select {
+  font-size: 1.6rem;
+  width: 100%;
+  box-sizing: border-box;
+  height: 4.5rem;
+  position: relative;
+  padding: 0 3rem 0 1.5rem;
+}
+
+.addresses [aria-expanded="false"] ~ div[id] {
+  display: none;
+}
+
+li[data-address] > h2 {
+  text-align: center;
+}
+
+.addresses ul p {
+  font-weight: 400;
+  font-size: var(--heading-h4);
+  line-height: var(--lh-h4);
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.addresses input[type="checkbox"] {
+  margin: 2rem 0.5rem 2rem 0;
+}
+
+label[for="address_default_address_new"],
+.address_default__update {
+  font-size: var(--heading-h4);
+  line-height: var(--lh-h4);
+}
+.addresses li>button {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.addresses form button:first-of-type {
+  margin-right: 1rem;
+}

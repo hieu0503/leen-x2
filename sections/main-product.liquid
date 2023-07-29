@@ -70,7 +70,36 @@
                     name="options[{{ option.name | escape }}]"
                     form="{{ product_form_id }}"
                   >
+                    {%- liquid
+                      assign variants_available_arr = product.variants | map: 'available'
+                      assign variants_option1_arr = product.variants | map: 'option1'
+                      assign variants_option2_arr = product.variants | map: 'option2'
+                      assign variants_option3_arr = product.variants | map: 'option3'
+
+                      assign product_form_id = 'product-form-' | append: section.id
+                    -%}
+
                     {% for value in option.values %}
+                      {%- liquid
+                        assign option_disabled = true
+
+                        for option1_name in variants_option1_arr
+                          case option.position
+                            when 1
+                              if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                assign option_disabled = false
+                              endif
+                            when 2
+                              if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                assign option_disabled = false
+                              endif
+                            when 3
+                              if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                assign option_disabled = false
+                              endif
+                          endcase
+                        endfor
+                      -%}
                       <option
                         value="{{ value | escape }}"
                         {% if option.selected_value == value %}
@@ -89,23 +118,57 @@
               {% endfor %}
             {% when 'quantity_selector' %}
               <div class="product-button d-grid mb-30">
-                {% form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' %}
+                {%- liquid
+                  assign show_dynamic_checkout = false
+                  if block.settings.show_dynamic_checkout == false
+                    assign show_dynamic_checkout = true
+                  endif
+
+                  assign check_against_inventory = true
+                  if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+                    assign check_against_inventory = false
+                  endif
+
+                  assign quantity_rule_soldout = false
+
+                  if check_against_inventory
+                    if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity
+                      assign quantity_rule_soldout = true
+                    endif
+                  endif
+                -%}
+                {%- form 'product',
+                  product,
+                  id: product_form_id,
+                  class: 'form',
+                  novalidate: 'novalidate',
+                  data-type: 'add-to-cart-form'
+                -%}
+                  <input
+                    name="id"
+                    value="{{ product.variants.first.id }}"
+                    type="hidden"
+                  >
                   <button
-                    class="btn btn-add h5"
-                    name="add"
+                    id="ProductSubmitButton-{{ section_id }}"
                     type="submit"
-                    data-product-id="{{ product.id }}"
-                    {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+                    name="add"
+                    class="product-form__submit btn btn-add h5"
+                    {% if quantity_rule_soldout %}
                       disabled
                     {% endif %}
                   >
-                    add to cart
+                    {%- if quantity_rule_soldout -%}
+                      Sold out
+                    {%- else -%}
+                      Add to cart
+                    {%- endif -%}
                   </button>
-                  {%- if block.settings.show_checkout -%}
+
+                  {%- if block.settings.show_dynamic_checkout -%}
                     {{ form | payment_button }}
-                    {% comment %} <a href="shop.html" class="btn btn-buy uppercase">buy now</a> {% endcomment %}
                   {%- endif -%}
-                {% endform %}
+                {%- endform -%}
 
                 <div class="number d-flex justify-between align-center">
                   <button class="decrease border-none">-</button>
@@ -197,7 +260,11 @@
   // Initial update to show the first set of thumbnails
   updateSlider();
 
-  // quantity
+  // ====================================
+  //
+  //  quantity
+  //
+  // ====================================
 
   // Lấy các phần tử trong HTML
   const decreaseButton = document.querySelector('.decrease');
@@ -248,7 +315,7 @@
       "settings": [
         {
           "type": "checkbox",
-          "id": "show_checkout",
+          "id": "show_dynamic_checkout",
           "default": true,
           "label": "Show Checkout"
         }

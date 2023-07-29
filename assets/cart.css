@@ -43,7 +43,8 @@
 }
 
 .product-option,
-.product-option dt {
+.product-option dt,
+.product-option dd {
   font-size: 1.4rem;
   word-break: break-word;
   line-height: 1.5em;

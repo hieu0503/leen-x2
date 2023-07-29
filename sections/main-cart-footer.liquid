@@ -7,36 +7,34 @@
         {% for block in section.blocks %}
           {%- case block.type -%}
             {%- when 'subtotal' -%}
-            <div class="js-contents" {{ block.shopify_attributes }}>
-              <div class="totals">
-                <h2 class="totals__subtotal">Subtotal:</h2>
-                <p class="totals__subtotal-value h2">{{ cart.total_price | money_with_currency }}</p>
+              <div class="js-contents" {{ block.shopify_attributes }}>
+                <div class="totals">
+                  <h2 class="totals__subtotal">Subtotal:</h2>
+                  <p class="totals__subtotal-value h2">{{ cart.total_price | money_with_currency }}</p>
+                </div>
               </div>
-            </div>
-          {%- else -%}
-            <div class="cart__ctas" {{ block.shopify_attributes }}>
-              <button
-                type="submit"
-                class="cart__update-button btn w100"
-                form="cart">
-                update
-              </button>
-              <button
-                type="submit"
-                id="checkout"
-                class="cart__checkout-button btn btn-discover w100"
-                name="checkout"
-                {% if cart == empty %}disabled{% endif %}
-                form="cart">
-                Checkout
-              </button>
-            </div>
-            {% comment %} 
-            {%- if additional_checkout_buttons -%}
-            <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
-            {{ content_for_additional_checkout_buttons }}
-            </div>
-            {%- endif -%} {% endcomment %}
+            {%- else -%}
+              <div class="cart__ctas" {{ block.shopify_attributes }}>
+                <button
+                  type="submit"
+                  class="cart__update-button btn w100"
+                  form="cart"
+                >
+                  update
+                </button>
+                <button
+                  type="submit"
+                  id="checkout"
+                  class="cart__checkout-button btn btn-discover w100"
+                  name="checkout"
+                  {% if cart == empty %}
+                    disabled
+                  {% endif %}
+                  form="cart"
+                >
+                  Checkout
+                </button>
+              </div>
           {%- endcase -%}
         {% endfor %}
       </div>
@@ -45,19 +43,20 @@
 </section>
 
 {% schema %}
-  {
-    "name": "Main cart footer",
-    "class": "cart__footer-wrapper",
-    "blocks": [
-      {
-        "type": "subtotal",
-        "name": "Subtotal",
-        "limit": 1
-      }, {
-        "type": "buttons",
-        "name": "Buttons",
-        "limit": 1
-      }
-    ]
-  }
+{
+  "name": "Main cart footer",
+  "class": "cart__footer-wrapper",
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "Subtotal",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1
+    }
+  ]
+}
 {% endschema %}

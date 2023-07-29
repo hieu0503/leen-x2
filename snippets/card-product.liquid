@@ -8,7 +8,7 @@
           src="{{ card_product.featured_image | image_url }}"
           alt="{{ card_product.featured_image.alt | escape }}"
           class="w100"
-          style="aspect-ratio: 1; object-fit: contain;"
+          style="aspect-ratio: 1; object-fit: cover;"
         >
       {% endif %}
     </div>
@@ -30,12 +30,38 @@
       </p>
     </div>
   </div>
+  {% liquid
+    assign check_against_inventory = true
+    if card_product.selected_or_first_available_variant.inventory_management != 'shopify' or card_product.selected_or_first_available_variant.inventory_policy == 'continue'
+      assign check_against_inventory = false
+    endif
+
+    assign quantity_rule_soldout = false
+
+    if check_against_inventory
+      if card_product.selected_or_first_available_variant.quantity_rule.min > card_product.selected_or_first_available_variant.inventory_quantity
+        assign quantity_rule_soldout = true
+      endif
+    endif
+  %}
   <form method="post" action="/cart/add">
     <input
       name="id"
       value="{{ card_product.variants.first.id }}"
       type="hidden"
     >
-    <button class="btn btn-border" data-product-id="{{ card_product.id }}">Add to cart</button>
+    <button
+      class="btn btn-border"
+      data-product-id="{{ card_product.id }}"
+      {% if quantity_rule_soldout %}
+        disabled
+      {% endif %}
+    >
+      {%- if quantity_rule_soldout -%}
+        Sold out
+      {%- else -%}
+        Add to cart
+      {%- endif -%}
+    </button>
   </form>
 </div>

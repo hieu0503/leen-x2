@@ -80,7 +80,7 @@
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s all;
 }
 
 .slider-slide img {
@@ -163,20 +163,6 @@
 
 .collection-text {
   color: var(--gray);
-}
-
-.btn-see {
-  color: var(--white);
-  background: transparent;
-  padding: 0;
-}
-
-.btn-see:hover {
-  background: transparent !important;
-}
-
-.btn-video {
-  width: 78px;
 }
 
 .service {
@@ -333,18 +319,6 @@ a.footer-mid__text:hover {
   margin-left: 2rem;
 }
 
-.btn-become {
-  padding: 13px 38px;
-  background: var(--color);
-  color: var(--white);
-  border: 1px solid var(--black3);
-}
-
-.btn-become:hover {
-  background: var(--white);
-  color: var(--color);
-}
-
 .contact-item {
   padding: 5rem 29px;
   background: var(--white);
@@ -384,10 +358,6 @@ a.footer-mid__text:hover {
   line-height: 4rem;
 }
 
-.btn-cleaning {
-  padding: 13px 34px;
-}
-
 .collection-product {
   padding: 151px 0;
   background: url(../images/shop.svg) no-repeat center right;
@@ -416,6 +386,7 @@ a.footer-mid__text:hover {
 
 .filter-sort {
   margin-right: 68px;
+  font-family: 'lato';
 }
 
 .filter-filter,
@@ -708,26 +679,6 @@ a.footer-mid__text:hover {
   grid-template-rows: 5rem 5rem;
 }
 
-.btn-buy {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  background: var(--color);
-}
-
-.btn-love {
-  padding: 15px;
-  background: url(../images/love1.svg) no-repeat center center;
-  background-size: auto;
-}
-
-.btn-love:hover {
-  background: url(../images/love1.svg) no-repeat center center;
-}
-
 .decrease,
 .increase {
   background: transparent;
@@ -941,6 +892,7 @@ a.footer-mid__text:hover {
 }
 
 .shop-featured__item.product-item {
+  /* height: 100%; */
   width: calc(100%);
   display: flex;
   flex-direction: column;
@@ -951,7 +903,6 @@ a.footer-mid__text:hover {
 
 .customer:not(.account):not(.order) {
   margin: 0 auto;
-  max-width: 33.4rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -985,4 +936,12 @@ a.footer-mid__text:hover {
   right: 20px;
   bottom: 24px;
   z-index: 1;
+}
+
+.btn.filter-filter {
+  padding: 0;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }

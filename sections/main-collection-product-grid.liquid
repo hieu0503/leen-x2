@@ -16,23 +16,51 @@
         </span>
         {{ section.settings.product_count }}
       </h5>
-      <facet-filters-form class="facets facets-vertical-sort page-width small-hide no-js-hidden">
+      <facet-filters-form class="facets facets-vertical-sort">
         <form class="facets-vertical-form" id="FacetSortForm">
           <div class="filter-block d-flex">
-            <span class="h5 p-0 fw-600">{{ section.settings.sort }}</span>
-            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-            <select class="filter-sort h5 border-none p-0 fw-600">
-              {%- for option in collection.sort_options -%}
-                <option
-                  value="{{ option.value | escape }}"
-                  {% if option.value == sort_by %}
-                    selected="selected"
-                  {% endif %}
-                >
-                  {{ option.name | escape }}
-                </option>
-              {%- endfor -%}
-            </select>
+            <div class="d-flex">
+              <span class="h5 p-0 fw-600">{{ section.settings.sort }}</span>
+              <select id="sort-by" class="filter-sort h5 border-none p-0 fw-600">
+                {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+                {% for option in collection.sort_options %}
+                  <option
+                    value="{{ option.value | escape }}"
+                    {% if option.value == sort_by %}
+                      selected="selected"
+                    {% endif %}
+                  >
+                    {{ option.name | escape }}
+                  </option>
+                {% endfor %}
+              </select>
+
+              {% javascript %}
+                Shopify.queryParams = {};
+
+                // Preserve existing query parameters
+                if (location.search.length) {
+                  var params = location.search.substr(1).split('&');
+
+                  for (var i = 0; i < params.length; i++) {
+                    var keyValue = params[i].split('=');
+
+                    if (keyValue.length) {
+                      Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+                    }
+                  }
+                }
+
+                // Update sort_by query parameter on select change
+                document.querySelector('#sort-by').addEventListener('change', function (e) {
+                  var value = e.target.value;
+
+                  Shopify.queryParams.sort_by = value;
+                  location.search = new URLSearchParams(Shopify.queryParams).toString();
+                });
+              {% endjavascript %}
+            </div>
             <button class="btn filter-filter h5 border-none p-0 fw-600">{{ section.settings.button }}</button>
           </div>
         </form>
