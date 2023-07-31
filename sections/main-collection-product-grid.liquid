@@ -66,23 +66,22 @@
         </form>
       </facet-filters-form>
     </div>
-    <div class="shop-collection shop-main">
-      {%- if collection.products.size == 0 -%}
-        <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
-          <div class="title-wrapper center">
-            <h2 class="title title--primary">
-              {{ section.settings.no_products }}
-              <br>
-              <a href="{{ routes.root_url }}" class="underlined-link link">{{ section.settings.back_to }}</a>
-            </h2>
-          </div>
+    {%- if collection.products.size == 0 -%}
+      <div class="collection collection--empty page-width text-center" id="product-grid" data-id="{{ section.id }}">
+        <div class="title-wrapper center">
+          <h2 class="title title--primary">
+            {{ section.settings.no_products }}
+          </h2>
+          <a href="{{ routes.root_url }}" class="description mt-25 btn btn-become">{{ section.settings.back_to }}</a>
         </div>
-      {%- else -%}
+      </div>
+    {%- else -%}
+      <div class="shop-collection shop-main">
         {% for product in collection.products %}
           {% render 'card-product', card_product: product, section_id: section.id %}
         {% endfor %}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
   </div>
 </section>
 

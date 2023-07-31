@@ -1,40 +1,43 @@
-<div class="page-width container">
-  <h1 class="title title--primary">
-    {{ section.settings.title }}
-  </h1>
-  {%- paginate collections by paginate_by -%}
-    <div class="collection-list shop-category__main d-grid" role="list">
-      {%- for collection in collections -%}
-        <div class="shop-category__item h100 text-center position-relative">
-          <a class="border-none h100 d-inline-block" href="{{ collection.url}}">
-            {% if collection.image == blank %}
-              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg h100 w100' }}
-            {% else %}
-              <img
-                class="w100 h100 obj-cover"
-                src="{{ collection.image | img_url }}"
-                alt="">
-            {% endif %}
-            <span class="btn btn-cate">
-              {{ collection.title }}
-            </span>
-          </a>
-        </div>
-      {%- endfor -%}
-    </div>
-  {%- endpaginate -%}
+<div class="page-width p100">
+  <div class="container">
+    <h1 class="title title--primary">
+      {{ section.settings.title }}
+    </h1>
+    {%- paginate collections by paginate_by -%}
+      <div class="collection-list shop-category__main d-grid" role="list">
+        {%- for collection in collections -%}
+          <div class="shop-category__item h100 text-center position-relative">
+            <a class="border-none h100 d-inline-block" href="{{ collection.url}}">
+              {% if collection.image == blank %}
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg h100 w100' }}
+              {% else %}
+                <img
+                  class="w100 h100 obj-cover"
+                  src="{{ collection.image | img_url }}"
+                  alt=""
+                >
+              {% endif %}
+              <span class="btn btn-cate">
+                {{ collection.title }}
+              </span>
+            </a>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endpaginate -%}
+  </div>
 </div>
 {% schema %}
-  {
-    "name": "Main list collections",
-    "class": "section",
-    "settings": [
-      {
-        "type": "inline_richtext",
-        "id": "title",
-        "label": "Title",
-        "default": "Collections"
-      }
-    ]
-  }
+{
+  "name": "Main list collections",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Collections"
+    }
+  ]
+}
 {% endschema %}
